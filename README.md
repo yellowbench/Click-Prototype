@@ -14,6 +14,8 @@ I have made plans that can convert this prototype into a real product using an n
 
 ## Start the website on Windows
 
+**Visual directions are also in the docs folder**
+
 1. Install Node.js 24 LTS from https://nodejs.org/ if needed. Use desktop Google Chrome with Bluetooth enabled.
 2. Extract the entire ZIP into a writable folder.
 3. Open the extracted Click-Local-Prototype folder and double-click Start Click.cmd. Keep its terminal window open.
