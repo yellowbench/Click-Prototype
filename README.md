@@ -8,7 +8,6 @@ I assembled and debugged the circuits, calibrated Bluetooth proximity, and teste
 This was my first real personal project where I got to learn about the Hackathon environment, prototyping with an ESP32 and learning about how useful it really is. I am posting this to begin my journey with electronics! I've created tech plans converting this prototype into a real product using an nRF52840.
 
 ![Circuits Fried:](https://img.shields.io/badge/ESP32s%20Fried-1-yellow)
-- Hit an endless `"Brownout detector was triggered"` boot loop. Verified the USB cable, port, and code on a second identical board, which ran fine. Learned how to isolate an ESP32 with repeated brownout resets through A/B testing. Replacing the board restored operation.
 
 ## Run on Windows
 
