@@ -1,5 +1,5 @@
 # My Role + AI Assistance
-This was an AI Hackathon project that I worked on within 72 hours. I built and debugged two ESP32 bracelet prototypes and verified Bluetooth exchanges and syncing to a local website. I used OpenAI Codex to generate much of the firmware and website integration code. My work focused on circuit assembly, wiring troubleshooting, proximity calibration, and end-to-end testing.
+This was an AI Hackathon project that I worked on within 48 hours. I built and debugged two ESP32 bracelet prototypes and verified Bluetooth exchanges and syncing to a local website. I used OpenAI Codex to generate much of the firmware and website integration code. My work focused on circuit assembly, wiring troubleshooting, proximity calibration, and end-to-end testing.
 
 # Click local prototype
 
