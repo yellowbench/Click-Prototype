@@ -1,6 +1,11 @@
 # My Role + AI Assistance
 This was an AI Hackathon project that I worked on within 48 hours. I built and debugged two ESP32 bracelet prototypes and verified Bluetooth exchanges and syncing to a local website. I used OpenAI Codex to generate much of the firmware and website integration code. My work focused on circuit assembly, wiring troubleshooting, proximity calibration, and end-to-end testing.
 
+This was my first real personal project where I got to learn about the Hackathon environment, prototyping with an ESP32 and learning about how useful it really is. I am posting this to begin my journey with electronics! 
+
+![Circuits Fried:](https://img.shields.io/badge/ESP32s%20Fried-1-yellow)
+- Hit an endless `"Brownout detector was triggered"` boot loop. Verified the USB cable, port, and code on a second identical board, which ran fine. Learned how to isolate a failing onboard 3.3V voltage regulator through systematic A/B hardware testing.
+
 # Click local prototype
 
 A downloadable copy of the Click ESP32 bracelet demo. Two boards exchange a tap over Bluetooth and sync the saved encounter into a local timeline. This copy starts with an empty encounter history. Sign-in and profile setup are demo screens.
