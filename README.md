@@ -1,70 +1,62 @@
-# My Role + AI Assistance
-This was an AI Hackathon project that I worked on within 48 hours. I built and debugged two ESP32 bracelet prototypes and verified Bluetooth exchanges and syncing to a local website. I used OpenAI Codex to generate much of the firmware and website integration code. My work focused on circuit assembly, wiring troubleshooting, proximity calibration, and end-to-end testing.
+# Click ESP32 Bracelet Prototype
 
-This was my first real personal project where I got to learn about the Hackathon environment, prototyping with an ESP32 and learning about how useful it really is. I am posting this to begin my journey with electronics! 
+A 48-hour hackathon prototype that exchanges taps between two ESP32 boards and syncs timestamped encounters to a local website. Sign-in and profile setup use demo accounts.
+
+## My Role + AI Assistance
+I assembled and debugged the circuits, calibrated Bluetooth proximity, and tested the complete exchange and sync flow. My teammate created the website design and artwork. OpenAI Codex generated much of the firmware and website integration code, which I configured and tested.
+
+This was my first real personal project where I got to learn about the Hackathon environment, prototyping with an ESP32 and learning about how useful it really is. I am posting this to begin my journey with electronics! I've created tech plans converting this prototype into a real product using an nRF52840.
 
 ![Circuits Fried:](https://img.shields.io/badge/ESP32s%20Fried-1-yellow)
-- Hit an endless `"Brownout detector was triggered"` boot loop. Verified the USB cable, port, and code on a second identical board, which ran fine. Learned how to isolate a failing onboard 3.3V voltage regulator through systematic A/B hardware testing.
+- Hit an endless `"Brownout detector was triggered"` boot loop. Verified the USB cable, port, and code on a second identical board, which ran fine. Learned how to isolate an ESP32 with repeated brownout resets through A/B testing. Replacing the board restored operation.
 
-# Click local prototype
+## Run on Windows
 
-A downloadable copy of the Click ESP32 bracelet demo. Two boards exchange a tap over Bluetooth and sync the saved encounter into a local timeline. This copy starts with an empty encounter history. Sign-in and profile setup are demo screens.
+1. Install [Node.js 24 LTS](https://nodejs.org/) and use desktop Chrome with Bluetooth enabled.
+2. Download the prototype ZIP from [Releases](https://github.com/yellowbench/Click-Prototype/releases) and extract it.
+3. Open `Start Click.cmd`, keep its terminal open, and visit **http://localhost:8081/**.
 
-I have made plans that can convert this prototype into a real product using an nRF52840.
+Use **Ctrl+C** in the terminal to stop the server. The runtime uses Node's built-in modules.
 
-## Start the website on Windows
+## Test the Prototype
 
-**Visual directions at the bottom of README**
+**Without hardware:** Choose **Continue with Google → Skip for now**, then complete the demo profile and add a test social handle. The timeline starts empty.
 
-1. Install Node.js 24 LTS from https://nodejs.org/ if needed. Use desktop Google Chrome with Bluetooth enabled.
-2. Extract the entire ZIP into a writable folder.
-3. Open the extracted Click-Local-Prototype folder and double-click Start Click.cmd. Keep its terminal window open.
-4. Open http://localhost:8081/ in Chrome.
+## With two ESP32 boards:
 
-You can also open PowerShell in this folder and run:
+1. Upload the matching sketches in `firmware/`. Each sketch's opening comments list its wiring, libraries, and Arduino settings. Board A uses an OLED and defaults to `USER_101`. Board B uses an LED and defaults to `USER_202`.
+2. Open two Chrome windows and pair a different board in each. Pairing sets the board's clock and syncs existing encounters. Complete profile setup using test names and handles.
+3. **Disconnect both browser windows**, hold the boards face-to-face, and press **one** push button. Wait for `ENCOUNTER SAVED`.
+4. Use **Sync bracelet** to reconnect each board. Each timeline shows the other person and the tap time.
 
-```powershell
-node scripts/preview-bracelet.mjs
-```
+## Guides and demonstrations
 
-The runtime uses Node's built-in modules. No npm installation is required. Open the page through the local server so that bracelet syncing works. Use Ctrl+C in the terminal to stop the server. If port 8081 is busy, close the other preview or run:
+- [Materials and circuit photos](docs/Materials%20%26%20Circuit%20Assembly.pdf)
+- [Visual syncing instructions](docs/Sync%20Guide.pdf)
+- [Close-range and distance-test GIFs](Video%20Demonstrations%20-%20GIF/)
+
+Demo names and encounters are saved locally in `.click-preview/encounters.sqlite`.
+
+<details>
+<summary>Optional troubleshooting and technical notes</summary>
+
+If port 8081 is busy, close the other preview or open PowerShell in the extracted folder and run:
 
 ```powershell
 $env:CLICK_PREVIEW_PORT = '8082'
 node scripts/preview-bracelet.mjs
 ```
 
-Then open http://localhost:8082/ instead.
+Then visit **http://localhost:8082/**.
 
-## Build and test guides
+- A previously saved board owner ID takes precedence over the sketch's default ID.
+- Repeated syncs retain one entry per encounter. Confirmed records are saved locally before the website acknowledges them and frees their board slots.
+- Proximity is tuned for the original hardware, so spacing may vary on other boards.
+- During development, I isolated an ESP32 with repeated brownout resets through A/B testing. Replacing the board restored operation.
+- Future work explores an nRF52840 wearable.
+- [Manrope font license](licenses/Manrope-OFL.txt)
 
-- [Materials and assembly](docs/Click-Materials-and-Assembly.pdf)
-- [Bluetooth syncing instructions](docs/Click-Circuit-Sync-Guide.pdf)
+</details>
 
-## Try it without a bracelet
-
-Choose Continue with Google, then Skip for now. Fill in the demo profile and at least one social handle to reach Your Clicks. The timeline stays empty until a real board is synced. The You tab can open pairing later.
-
-## Try a real tap with two ESP32 boards
-
-1. Use the two included firmware sketches with the hardware wiring in the build documentation. A uses an OLED and defaults to USER_101. B uses an LED and defaults to USER_202. A stored owner ID on a previously programmed board takes precedence. Each sketch's opening comment lists the libraries, wiring, and Arduino settings.
-2. Open this local URL in two Chrome windows. Choose Continue with Google, then Pair bracelet in each window. Choose a different powered ESP32 in each. This syncs the clock and any confirmed records. Complete profile setup using test names and handles.
-3. Click Disconnect in BOTH windows. Hold the boards face-to-face and press ONE push button. Wait for ENCOUNTER SAVED and the OLED/LED confirmation.
-4. In each window, use Sync bracelet to reconnect. The corresponding user's timeline displays the other person and the tap time. Further reads use Sync now.
-
-Each new confirmed tap is saved locally before the website acknowledges it, allowing that board's record slot to be reused. Repeating a sync keeps one timeline entry for that record. Set each board's clock by connecting before the tap if you want a calendar time. The RSSI filter is tuned for the original demo hardware, so spacing may vary on other ESP32 boards.
-
-## Files and local storage
-
-- Frontend.html contains the Click design, embedded browser libraries, and brand artwork. *This artwork and prototype website was made by my teammate and not by me. I only implemented the bluetooth pair feature onto the "Pair your Click" menu and the "Sync Bracelet" options*
-- scripts contains the local server, Bluetooth client, controls, timeline integration, and SQLite store. *Made by Codex*
-- firmware contains the two standalone Arduino sketches. *Made by Codex, modified by me*
-- Start Click.cmd starts the website on Windows.
-
-The server binds to this computer at 127.0.0.1. Demo names and new encounters are saved in .click-preview/encounters.sqlite in the extracted folder.
-
-The embedded font and JavaScript license notices are retained with the page.
-
-## Working prototype
 
 ![Click bracelet prototype circuit](docs/circuit.jpg)
