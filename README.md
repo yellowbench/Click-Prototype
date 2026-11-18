@@ -10,6 +10,8 @@ This was my first real personal project where I got to learn about the Hackathon
 
 A downloadable copy of the Click ESP32 bracelet demo. Two boards exchange a tap over Bluetooth and sync the saved encounter into a local timeline. This copy starts with an empty encounter history. Sign-in and profile setup are demo screens.
 
+I have made plans that can convert this prototype into a real product using an nRF52840.
+
 ## Start the website on Windows
 
 1. Install Node.js 24 LTS from https://nodejs.org/ if needed. Use desktop Google Chrome with Bluetooth enabled.
