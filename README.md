@@ -14,7 +14,7 @@ I have made plans that can convert this prototype into a real product using an n
 
 ## Start the website on Windows
 
-**Visual directions are also in the docs folder**
+**Visual directions at the bottom of README**
 
 1. Install Node.js 24 LTS from https://nodejs.org/ if needed. Use desktop Google Chrome with Bluetooth enabled.
 2. Extract the entire ZIP into a writable folder.
@@ -35,6 +35,11 @@ node scripts/preview-bracelet.mjs
 ```
 
 Then open http://localhost:8082/ instead.
+
+## Build and test guides
+
+- [Materials and assembly](docs/Click-Materials-and-Assembly.pdf)
+- [Bluetooth syncing instructions](docs/Click-Circuit-Sync-Guide.pdf)
 
 ## Try it without a bracelet
 
@@ -59,3 +64,7 @@ Each new confirmed tap is saved locally before the website acknowledges it, allo
 The server binds to this computer at 127.0.0.1. Demo names and new encounters are saved in .click-preview/encounters.sqlite in the extracted folder.
 
 The embedded font and JavaScript license notices are retained with the page.
+
+## Working prototype
+
+![Click bracelet prototype circuit](docs/circuit.jpg)
