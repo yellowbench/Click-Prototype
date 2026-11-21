@@ -3,7 +3,7 @@
 A 48-hour hackathon prototype that exchanges taps between two ESP32 boards and syncs timestamped encounters to a local website. Sign-in and profile setup use demo accounts.
 
 ## My Role
-I assembled and debugged the circuits, calibrated Bluetooth proximity, and tested the complete exchange and sync flow. My teammate created the website design and artwork. I Leveraged AI tooling to accelerate firmware and web integration, while mainly focusing on hardware assembly.
+I assembled and debugged the circuits, calibrated Bluetooth proximity, and tested the complete exchange and sync flow. My teammate created the website design and artwork. I leveraged AI tooling to accelerate firmware and web integration, while mainly focusing on hardware assembly.
 
 ![Circuits Fried:](https://img.shields.io/badge/ESP32s%20Fried-1-yellow)
 
